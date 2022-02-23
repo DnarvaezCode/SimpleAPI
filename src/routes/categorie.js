@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
       .status(500)
       .json({ success: false, message: "The categorie not created." });
 
-  res.send(categorie);
+  res.status(200).send(categorie);
 });
 
 router.delete("/:id", (req, res) => {

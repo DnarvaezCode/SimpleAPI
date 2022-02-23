@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 const { routerProduct } = require("./routes/product");
 const { routerCategorie } = require("./routes/categorie");
+const { routerUser } = require("./routes/user");
 require("dotenv").config();
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 /**Router */
 app.use("/api/product", routerProduct);
 app.use("/api/categorie", routerCategorie);
+app.use("/api/user", routerUser);
 
 /**Connection */
 mongoose
