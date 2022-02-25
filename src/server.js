@@ -5,6 +5,9 @@ const cors = require("cors");
 const { routerProduct } = require("./routes/product");
 const { routerCategorie } = require("./routes/categorie");
 const { routerUser } = require("./routes/user");
+const authJwt = require("./helpers/validate-jwt");
+const errorHandler = require("./helpers/error-handler");
+
 require("dotenv").config();
 const app = express();
 
@@ -13,7 +16,10 @@ app.use(cors());
 app.options("*", cors());
 app.use(morgan("tiny"));
 app.use(express.json());
-
+/**Validar la autenticación basada en jwt.*/
+app.use(authJwt());
+/**Mandar error personalizado */
+app.use(errorHandler);
 /**Router */
 app.use("/api/product", routerProduct);
 app.use("/api/categorie", routerCategorie);
